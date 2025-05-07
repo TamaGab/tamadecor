@@ -6,11 +6,41 @@
         "dev": "vite"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.8.2",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^1.2.0",
-        "tailwindcss": "^4.0.0",
         "vite": "^6.2.4"
-    }
+    },
+    "name": "tamadecor",
+    "version": "1.0.0",
+    "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
+    "main": "vite.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "dependencies": {
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/vite": "^4.1.5",
+        "chalk": "^4.1.2",
+        "detect-libc": "^2.0.4",
+        "follow-redirects": "^1.15.9",
+        "form-data": "^4.0.2",
+        "jiti": "^2.4.2",
+        "lightningcss": "^1.29.3",
+        "lightningcss-linux-x64-gnu": "^1.29.3",
+        "lightningcss-linux-x64-musl": "^1.29.3",
+        "lodash": "^4.17.21",
+        "picocolors": "^1.1.1",
+        "proxy-from-env": "^1.1.0",
+        "rxjs": "^7.8.2",
+        "shell-quote": "^1.8.2",
+        "supports-color": "^8.1.1",
+        "tailwindcss": "^4.1.5",
+        "tree-kill": "^1.2.2",
+        "vite-plugin-full-reload": "^1.2.0",
+        "yargs": "^17.7.2"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
