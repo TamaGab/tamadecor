@@ -1,25 +1,24 @@
 #!/bin/bash
 
-# Caminhos relativos
-ENV_FILE=".env"
-SRC_ENV_FILE="src/.env"
+DOCKER_ENV_FILE="./docker/.env"
+SRC_ENV_FILE="./src/.env"
 
 echo "🚀 Iniciando ambiente Laravel..."
 
-# Verifica se o .env da raiz existe
-if [ ! -f "$ENV_FILE" ]; then
+# Verifica se o .env do Docker existe
+if [ ! -f "$DOCKER_ENV_FILE" ]; then
   if [ -f "$SRC_ENV_FILE" ]; then
-    echo "📄 .env na raiz não encontrado. Copiando de src/.env..."
-    cp "$SRC_ENV_FILE" "$ENV_FILE"
+    echo "📄 .env do Docker não encontrado. Criando a partir do src/.env..."
+    cp "$SRC_ENV_FILE" "$DOCKER_ENV_FILE"
   else
-    echo "❌ Nenhum .env encontrado em src/.env para copiar."
-    echo "Crie o arquivo src/.env ou copie manualmente."
+    echo "❌ Nenhum .env encontrado para criar o ambiente Docker."
     exit 1
   fi
 else
-  echo "✅ .env já existe na raiz. Tudo certo."
+  echo "✅ docker/.env já existe. Tudo certo."
 fi
 
-# Sobe os containers com build
+# Subir containers com build
 echo "🐳 Subindo os containers com docker compose..."
+cd docker
 docker compose up -d --build
