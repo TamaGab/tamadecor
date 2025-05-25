@@ -14,15 +14,15 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton("sidebarMenu", function () {
             return  [
                 ['label' => 'Início', 'icon' => 'house', 'route' => 'dashboard'],
-                ['label' => 'Vendas', 'icon' => 'handshake', 'route' => 'clients.create'],
                 [
-                    'label' => 'Compras',
-                    'icon' => 'cart-shopping',
+                    'label' => 'Vendas',
+                    'icon' => 'handshake',
                     'children' => [
-                        ['label' => 'Fornecedores', 'route' => 'welcome'],
-                        ['label' => 'Fornecedores', 'route' => 'welcome']
+                        ['label' => 'Clientes', 'route' => 'clients.index'],
+                        ['label' => 'Pedidos', 'route' => 'welcome']
                     ]
                 ],
+                ['label' => 'Compras', 'icon' => 'cart-shopping', 'route' => 'welcome'],
                 [
                     'label' => 'Financeiro',
                     'icon' => 'money-bill',
