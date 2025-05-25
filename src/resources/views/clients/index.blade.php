@@ -10,7 +10,7 @@
             @endif
 
             @if ($clients->isEmpty())
-                <p class="text-gray-600">Nenhum cliente cadastrado ainda.</p>
+                <p class="text-black">Nenhum cliente cadastrado ainda.</p>
             @else
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-200 rounded-md">
@@ -31,14 +31,19 @@
                                     <td class="px-4 py-2">{{ $client->phone }}</td>
                                     <td class="px-4 py-2">{{ $client->email }}</td>
                                     <td class="px-4 py-2 text-right">
-                                        <a href="{{ route('clients.edit', $client) }}"
-                                            class="text-blue-600 hover:underline mr-2">Editar</a>
+                                        <a href="{{ route('clients.edit', $client) }}" title="Editar"
+                                            class="text-blue-600 hover:text-blue-900 mr-2">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </a>
                                         <form action="{{ route('clients.destroy', $client) }}" method="POST"
                                             class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:underline"
-                                                onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</button>
+                                            <button type="submit" class="text-red-600  hover:text-red-900"
+                                                title="Excluir"
+                                                onclick="return confirm('Tem certeza que deseja excluir este cliente?')">
+                                                <i class="fa-solid fa-circle-xmark"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
@@ -47,11 +52,13 @@
                     </table>
                 </div>
             @endif
-
             <div class="mt-6 text-right">
                 <a href="{{ route('clients.create') }}">
-                    <x-primary-button>+ Novo Cliente</x-primary-button>
+                    <x-primary-button>Novo Cliente</x-primary-button>
                 </a>
+            </div>
+            <div class="mt-4">
+                {{ $clients->links() }}
             </div>
         </x-flowbite.card>
     </div>
