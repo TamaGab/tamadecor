@@ -11,7 +11,30 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton("sidebarMenu", function () {
+            return  [
+                ['label' => 'Início', 'icon' => 'house', 'route' => 'dashboard'],
+                [
+                    'label' => 'Vendas',
+                    'icon' => 'handshake',
+                    'children' => [
+                        ['label' => 'Clientes', 'route' => 'clients.index'],
+                        ['label' => 'Pedidos', 'route' => 'welcome']
+                    ]
+                ],
+                ['label' => 'Compras', 'icon' => 'cart-shopping', 'route' => 'welcome'],
+                [
+                    'label' => 'Financeiro',
+                    'icon' => 'money-bill',
+                    'children' => [
+                        ['label' => 'Fornecedores', 'route' => 'welcome'],
+                        ['label' => 'Fornecedores', 'route' => 'welcome']
+                    ]
+                ],
+                ['label' => 'Estoque', 'icon' => 'box-open', 'route' => 'welcome'],
+                ['label' => 'Relatórios', 'icon' => 'money-bill-trend-up', 'route' => 'welcome'],
+            ];
+        });
     }
 
     /**
@@ -19,6 +42,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->share('sidebarMenu', $this->app->make('sidebarMenu'));
     }
 }
