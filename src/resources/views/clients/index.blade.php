@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-flowbite.card title="Clientes Cadastrados">
+        <x-flowbite.card title="Clientes Cadastrados" backUrl="dashboard">
             @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
                     {{ session('success') }}
@@ -27,8 +27,8 @@
                             @foreach ($clients as $client)
                                 <tr class="border-t hover:bg-gray-50">
                                     <td class="px-4 py-2">{{ $client->name }}</td>
-                                    <td class="px-4 py-2">{{ $client->cpf }}</td>
-                                    <td class="px-4 py-2">{{ $client->phone }}</td>
+                                    <td class="px-4 py-2">{{ $client->cpf_formatado }}</td>
+                                    <td class="px-4 py-2">{{ $client->phone_formatado }}</td>
                                     <td class="px-4 py-2">{{ $client->email }}</td>
                                     <td class="px-4 py-2 text-right">
                                         <a href="{{ route('clients.edit', $client) }}" title="Editar"

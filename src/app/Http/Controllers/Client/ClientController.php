@@ -85,18 +85,33 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
     public function update(Request $request, Client $client)
     {
-        $validated = $request->validate(
-            [
-                'name' => ['required', 'string', 'max:255'],
-                'cpf' => ['nullable', 'string', 'max:11', 'unique:clients'],
-                'rg' => ['nullable', 'string', 'max:20'],
-                'phone' => ['nullable', 'string', 'max:20'],
-                'email' => ['nullable', 'email', 'max:255'],
-                'notes' => ['nullable', 'string'],
-            ]
-        );
+
+        $request->merge([
+            'cpf' => $request->filled('cpf') ? preg_replace('/\D/', '', $request->cpf) : null,
+            'rg' => $request->filled('rg') ? preg_replace('/\D/', '', $request->rg) : null,
+            'phone' => $request->filled('phone') ? preg_replace('/\D/', '', $request->phone) : null,
+        ]);
+
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'cpf' => ['nullable', 'string', 'max:14'],
+            'rg' => ['nullable', 'string', 'max:20'],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'notes' => ['nullable', 'string'],
+        ];
+
+        if ($request->filled('cpf')) {
+            $rules['cpf'][] = Rule::unique('clients')->ignore($client->id);
+        }
+
+        $validated = $request->validate($rules, [
+            'name.required' => 'O nome do cliente é obrigatório!',
+            'cpf.unique' => 'Já existe um cliente com esse CPF.',
+        ]);
 
         $client->update($validated);
 
