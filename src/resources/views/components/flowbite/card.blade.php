@@ -15,8 +15,7 @@
     @if ($title)
         <div class="mb-6 pb-6 border-b-2 border-black flex items-center gap-2">
             <a href="{{ $resolvedBackUrl }}"
-                class="text-emerald-600 hover:text-emerald-900 hover:text-2xl text-xl font-semibold underline"
-                title="Página Anterior">
+                class="text-emerald-600 hover:text-emerald-900 text-xl font-semibold underline" title="Página Anterior">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
             <h2 class="text-xl font-bold">
