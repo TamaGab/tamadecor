@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-flowbite.card title="Dados do Cliente">
+        <x-card title="Dados do Cliente">
             <form method="POST" action="{{ route('clients.store') }}">
                 @csrf
 
@@ -74,6 +74,6 @@
                     <x-primary-button>Salvar</x-primary-button>
                 </div>
             </form>
-        </x-flowbite.card>
+        </x-card>
     </div>
 </x-app-layout>

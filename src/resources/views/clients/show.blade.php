@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-flowbite.card title="Visualizar Cliente" backUrl="clients.index">
+        <x-card title="Visualizar Cliente" backUrl="clients.index">
             <div class="grid grid-cols-3 gap-6">
                 <div>
                     <x-input-label value="Nome" />
@@ -49,6 +49,6 @@
                     <x-secondary-button>Voltar à lista</x-secondary-button>
                 </a>
             </div>
-        </x-flowbite.card>
+        </x-card>
     </div>
 </x-app-layout>
