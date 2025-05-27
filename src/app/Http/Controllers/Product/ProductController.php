@@ -34,17 +34,16 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-
-        ]);
+        $validated = $request->validate(
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'text'],
+            ],
+            ['name.required' => 'O nome do produto é obrigatório!']
+        );
 
         Product::create($validated);
-
-        return redirect()->route('products.index')
-            ->with('success', 'Produto criado com sucesso!');
+        return redirect()->route('products.index')->with('success', 'Produto criado com sucesso!');
     }
 
 
