@@ -47,10 +47,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('products.index');       // listagem
         Route::get('/create', [ProductController::class, 'create'])->name('products.create'); // formulário
         Route::post('/', [ProductController::class, 'store'])->name('products.store');       // salvar
-        Route::get('/{client}', [ProductController::class, 'show'])->name('products.show');  // visualizar
-        Route::get('/{client}/edit', [ProductController::class, 'edit'])->name('products.edit'); // editar
-        Route::put('/{client}', [ProductController::class, 'update'])->name('products.update');  // atualizar
-        Route::delete('/{client}', [ProductController::class, 'destroy'])->name('products.destroy'); // deletar
+        Route::get('/{product}', [ProductController::class, 'show'])->name('products.show');  // visualizar
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('products.edit'); // editar
+        Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');  // atualizar
+        Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy'); // deletar
     });
 });
 

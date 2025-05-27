@@ -37,7 +37,7 @@ class ProductController extends Controller
         $validated = $request->validate(
             [
                 'name' => ['required', 'string', 'max:255'],
-                'description' => ['nullable', 'text'],
+                'description' => ['nullable', 'string'],
             ],
             ['name.required' => 'O nome do produto é obrigatório!']
         );
@@ -55,16 +55,18 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-
-        ]);
+        $validated = $request->validate(
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string'],
+            ],
+            [
+                'name.required' => 'O nome do produto é obrigatório!'
+            ]
+        );
 
         $product->update($validated);
-
-        return redirect()->route('products.index')
-            ->with('success', 'Produto atualizado com sucesso!');
+        return redirect()->route('products.index')->with('success', 'Produto atualizado com sucesso!');
     }
 
 
