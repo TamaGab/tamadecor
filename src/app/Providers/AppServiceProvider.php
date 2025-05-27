@@ -19,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
                     'icon' => 'handshake',
                     'children' => [
                         ['label' => 'Clientes', 'route' => 'clients.index'],
-                        ['label' => 'Pedidos', 'route' => 'welcome']
+                        ['label' => 'Produtos', 'route' => 'products.index'],
+                        ['label' => 'Pedidos', 'route' => 'orders.index']
                     ]
                 ],
                 ['label' => 'Compras', 'icon' => 'cart-shopping', 'route' => 'welcome'],

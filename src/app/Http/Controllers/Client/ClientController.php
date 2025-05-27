@@ -20,9 +20,9 @@ class ClientController extends Controller
             $search = $request->search;
 
             $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                    ->orWhere('cpf', 'like', "%{$search}%")
-                    ->orWhere('phone', 'like', "%{$search}%");
+                $q->whereRaw("name LIKE ? COLLATE utf8mb4_unicode_ci", ["%{$search}%"])
+                    ->orWhereRaw("cpf LIKE ? COLLATE utf8mb4_unicode_ci", ["%{$search}%"])
+                    ->orWhereRaw("phone LIKE ? COLLATE utf8mb4_unicode_ci", ["%{$search}%"]);
             });
         } else {
             $query->orderBy('id', 'asc');

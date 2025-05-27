@@ -1,11 +1,11 @@
-@section('title', 'Lista de Clientes')
+@section('title', 'Lista de Vendas')
 
 <x-app-layout>
     <div>
-        <x-card title="Clientes Cadastrados" backUrl="dashboard">
+        <x-card title="Vendas Registradas" backUrl="dashboard">
             <x-searchbox />
 
-            @if (session('success'))
+            {{-- @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
                     {{ session('success') }}
                 </div>
@@ -88,7 +88,7 @@
 
             <div class="mt-4">
                 {{ $clients->links() }}
-            </div>
+            </div> --}}
         </x-card>
     </div>
 </x-app-layout>

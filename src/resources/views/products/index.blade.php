@@ -1,8 +1,8 @@
-@section('title', 'Lista de Clientes')
+@section('title', 'Lista de Produtos')
 
 <x-app-layout>
     <div>
-        <x-card title="Clientes Cadastrados" backUrl="dashboard">
+        <x-card title="Produtos Cadastrados" backUrl="dashboard">
             <x-searchbox />
 
             @if (session('success'))
@@ -11,41 +11,37 @@
                 </div>
             @endif
 
-            @if ($clients->isEmpty())
-                <p class="text-black">Nenhum cliente cadastrado.</p>
+            @if ($products->isEmpty())
+                <p class="text-black">Nenhum produto cadastrado.</p>
             @else
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-200 rounded-md">
                         <thead class="bg-gray-100">
                             <tr>
                                 <th class="px-4 py-2 text-left">Nome</th>
-                                <th class="px-4 py-2 text-left">CPF</th>
-                                <th class="px-4 py-2 text-left">Telefone</th>
-                                <th class="px-4 py-2 text-left">E-mail</th>
+                                <th class="px-4 py-2 text-left">Descrição</th>
                                 <th class="px-4 py-2 text-right">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clients as $client)
+                            @foreach ($products as $product)
                                 <tr class="border-t hover:bg-gray-50">
-                                    <td class="px-4 py-2 text-left">{{ $client->name }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->cpf_formatado }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->phone_formatado }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->email }}</td>
+                                    <td class="px-4 py-2 text-left">{{ $product->name }}</td>
+                                    <td class="px-4 py-2 text-left">{{ $product->description ?? '-' }}</td>
                                     <td class="px-4 py-2 text-right">
                                         <div class="flex items-center justify-end gap-3">
 
-                                            <a href="{{ route('clients.show', $client) }}" title="Visualizar"
+                                            <a href="{{ route('products.show', $product) }}" title="Visualizar"
                                                 class="text-emerald-600 hover:text-emerald-900 flex items-center justify-center w-6 h-6">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
 
-                                            <a href="{{ route('clients.edit', $client) }}" title="Editar"
+                                            <a href="{{ route('products.edit', $product) }}" title="Editar"
                                                 class="text-blue-600 hover:text-blue-900 flex items-center justify-center w-6 h-6">
-                                                <i class="fa-solid fa-user-pen"></i>
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
 
-                                            <form method="POST" action="{{ route('clients.destroy', $client->id) }}">
+                                            <form method="POST" action="{{ route('products.destroy', $product->id) }}">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -53,7 +49,7 @@
                                                     @close-modal.window="showDeleteModal = false">
 
                                                     <button @click.prevent="showDeleteModal = true"
-                                                        class="text-red-600 hover:text-red-800" title="Excluir cliente">
+                                                        class="text-red-600 hover:text-red-800" title="Excluir produto">
                                                         <i class="fa-solid fa-circle-xmark text-xl"></i>
                                                     </button>
 
@@ -63,7 +59,7 @@
                                                         title="Confirmação de exclusão" confirmText="Excluir"
                                                         cancelText="Cancelar">
                                                         <p class="text-left">
-                                                            Tem certeza que deseja excluir este cliente? Essa ação não
+                                                            Tem certeza que deseja excluir este produto? Essa ação não
                                                             pode ser desfeita.
                                                         </p>
                                                     </x-modal>
@@ -81,13 +77,13 @@
             @endif
 
             <div class="mt-6 text-right">
-                <a href="{{ route('clients.create') }}">
-                    <x-primary-button>Novo Cliente</x-primary-button>
+                <a href="{{ route('products.create') }}">
+                    <x-primary-button>Novo Produto</x-primary-button>
                 </a>
             </div>
 
             <div class="mt-4">
-                {{ $clients->links() }}
+                {{ $products->links() }}
             </div>
         </x-card>
     </div>
