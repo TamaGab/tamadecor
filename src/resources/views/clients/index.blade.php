@@ -3,25 +3,7 @@
 <x-app-layout>
     <div>
         <x-card title="Clientes Cadastrados" backUrl="dashboard">
-            <form method="GET" action="{{ route('clients.index') }}" class="mb-4 w-full max-w-sm">
-                <div class="relative">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar cliente..."
-                        title="Buscar Cliente"
-                        class="w-full rounded-md border border-gray-300 shadow focus:border-emerald-300 focus:ring focus:ring-emerald-100 focus:ring-opacity-50 text-md placeholder-gray-400 pr-10" />
-
-                    <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </span>
-
-                    @if (request('search'))
-                        <a href="{{ route('clients.index') }}"
-                            class="absolute inset-y-0 right-10 flex items-center text-gray-500 hover:text-red-600"
-                            title="Limpar busca">
-                            <i class="fa-solid fa-times-circle"></i>
-                        </a>
-                    @endif
-                </div>
-            </form>
+            <x-searchbox />
 
             @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
