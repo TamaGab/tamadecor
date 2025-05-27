@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,28 @@ Route::middleware('auth')->group(function () {
         Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit'); // editar
         Route::put('/{client}', [ClientController::class, 'update'])->name('clients.update');  // atualizar
         Route::delete('/{client}', [ClientController::class, 'destroy'])->name('clients.destroy'); // deletar
+    });
+
+    // PEDIDOS
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('orders.index');       // listagem
+        Route::get('/create', [OrderController::class, 'create'])->name('orders.create'); // formulário
+        Route::post('/', [OrderController::class, 'store'])->name('orders.store');       // salvar
+        Route::get('/{client}', [OrderController::class, 'show'])->name('orders.show');  // visualizar
+        Route::get('/{client}/edit', [OrderController::class, 'edit'])->name('orders.edit'); // editar
+        Route::put('/{client}', [OrderController::class, 'update'])->name('orders.update');  // atualizar
+        Route::delete('/{client}', [OrderController::class, 'destroy'])->name('orders.destroy'); // deletar
+    });
+
+    // PRODUTOS
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('products.index');       // listagem
+        Route::get('/create', [ProductController::class, 'create'])->name('products.create'); // formulário
+        Route::post('/', [ProductController::class, 'store'])->name('products.store');       // salvar
+        Route::get('/{client}', [ProductController::class, 'show'])->name('products.show');  // visualizar
+        Route::get('/{client}/edit', [ProductController::class, 'edit'])->name('products.edit'); // editar
+        Route::put('/{client}', [ProductController::class, 'update'])->name('products.update');  // atualizar
+        Route::delete('/{client}', [ProductController::class, 'destroy'])->name('products.destroy'); // deletar
     });
 });
 
