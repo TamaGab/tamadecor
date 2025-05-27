@@ -15,11 +15,20 @@ class Order extends Model
 
     public function client(): BelongsTo
     {
-        return $this -> belongsTo(Client::class);
+        return $this->belongsTo(Client::class);
     }
 
     public function orderItems(): HasMany
     {
-        return $this -> hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class);
     }
- }
+
+
+    public function getTotalAttribute()
+    {
+
+        return $this->orderItems->sum(function ($item) {
+            return $item->quantity * $item->price;
+        });
+    }
+}

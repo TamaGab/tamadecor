@@ -140,4 +140,23 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('clients.index')->with('success', 'Cliente excluido com sucesso!');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+
+        $clients = Client::select('id', 'name', 'cpf')
+            ->where('name', 'like', "%{$search}%")
+            ->limit(10)
+            ->get()
+            ->map(function ($client) {
+                return [
+                    'id' => $client->id,
+                    'name' => $client->name,
+                    'cpf_formatado' => $client->cpf_formatado,
+                ];
+            });
+
+        return response()->json($clients);
+    }
 }

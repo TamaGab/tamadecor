@@ -11,19 +11,31 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with(['client', 'orderItems.product'])->get();
+        $query = Order::with(['client', 'orderItems.product']);
 
-        return view('orders.index',  compact('orders'));
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $query->whereHas('client', function ($q) use ($search) {
+                $q->whereRaw("name LIKE ? COLLATE utf8mb4_unicode_ci", ["%{$search}%"]);
+            });
+        } else {
+            $query->orderBy('id', 'asc');
+        }
+
+        $orders = $query->paginate(10);
+        return view('orders.index', compact('orders'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**

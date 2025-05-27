@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-card title="Visualizar Produto" backUrl="products.index">
+        <x-custom-card title="Visualizar Produto" backUrl="products.index">
             <div class="grid grid-cols-3 gap-6">
                 <div>
                     <x-input-label value="Nome" />
@@ -22,6 +22,6 @@
                     <x-secondary-button>Voltar à lista</x-secondary-button>
                 </a>
             </div>
-        </x-card>
+        </x-custom-card>
     </div>
 </x-app-layout>
