@@ -46,6 +46,11 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produto criado com sucesso!');
     }
 
+    public function show(Product $product)
+    {
+        return view('products.show', compact('product'));
+    }
+
 
     public function edit(Product $product)
     {
@@ -73,8 +78,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
-        return redirect()->route('products.index')
-            ->with('success', 'Produto removido com sucesso!');
+        return redirect()->route('products.index')->with('success', 'Produto removido com sucesso!');
     }
 }
