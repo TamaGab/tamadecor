@@ -10,7 +10,8 @@ class Order extends Model
 {
     protected $fillable = [
         'client_id',
-        'order_date'
+        'order_date',
+        'total_price'
     ];
 
     public function client(): BelongsTo

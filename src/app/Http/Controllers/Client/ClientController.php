@@ -132,31 +132,9 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Client $client)
     {
         $client->delete();
         return redirect()->route('clients.index')->with('success', 'Cliente excluido com sucesso!');
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->get('search');
-
-        $clients = Client::select('id', 'name', 'cpf')
-            ->where('name', 'like', "%{$search}%")
-            ->limit(10)
-            ->get()
-            ->map(function ($client) {
-                return [
-                    'id' => $client->id,
-                    'name' => $client->name,
-                    'cpf_formatado' => $client->cpf_formatado,
-                ];
-            });
-
-        return response()->json($clients);
     }
 }

@@ -3,7 +3,7 @@
 <x-app-layout>
     <div>
         <x-custom-card title="Pedidos Cadastrados" backUrl="dashboard">
-
+            <x-searchbox></x-searchbox>
             @if ($orders->isEmpty())
                 <p class="text-black">Nenhum pedido cadastrado.</p>
             @else
@@ -84,6 +84,12 @@
                     </table>
                 </div>
             @endif
+            <div class="mt-6 text-right">
+                <a href="{{ route('orders.create') }}">
+                    <x-primary-button>Novo Pedido</x-primary-button>
+                </a>
+            </div>
+
 
             <div class="mt-4">
                 {{ $orders->links() }}

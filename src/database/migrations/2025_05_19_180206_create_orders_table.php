@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
             $table->date('order_date')->useCurrent();
+            $table->decimal('total_price', 10, 2);
             $table->timestamps();
         });
     }
