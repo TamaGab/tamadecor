@@ -1,40 +1,52 @@
-@section('title', 'Cadastro venda')
+@section('title', 'Editar venda')
 
 <x-app-layout>
-    <div x-data="{
-        selectedClient: null,
-        orderItems: [{ product: null, price: '', quantity: 1 }],
+<div
+    x-data="{
+        selectedClient: @js($order->client),
+        orderItems: @js($order->orderItems->map(function($item) {
+            return [
+                'product' => $item->product,
+                'price' => 'R$ ' . number_format($item->price, 2, ',', ''),
+                'quantity' => $item->quantity,
+            ];
+        })),
         currentProductIndex: 0,
-    
+
         openProductModal(index) {
             this.currentProductIndex = index;
             $modalOpen('modal-listproduct');
         },
-    
+
         removeProduct(index) {
             this.orderItems.splice(index, 1);
             if (this.orderItems.length === 0) {
                 this.orderItems.push({ product: null, price: '', quantity: 1 });
             }
         },
-    
+
         maskCurrency(value) {
             value = value.replace(/\D/g, '');
             if (!value) return '';
             value = (parseInt(value) / 100).toFixed(2).replace('.', ',');
             return 'R$ ' + value;
         },
-    
+
         totalValue() {
             return this.orderItems.reduce((total, item) => {
                 if (!item.price || !item.quantity) return total;
-                let numericPrice = parseFloat(item.price.replace('R$', '').replace('.', '').replace(',', '.').trim());
+                let numericPrice = parseFloat(item.price.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
                 if (isNaN(numericPrice)) return total;
                 return total + (numericPrice * item.quantity);
             }, 0);
         }
     }"
-        x-on:product-selected.window="
+
+    x-init="
+        orderItems.push({ product: null, price: '', quantity: 1 });
+    "
+
+    x-on:product-selected.window="
         orderItems[currentProductIndex].product = $event.detail.product;
         $modalClose('modal-listproduct');
 
@@ -42,13 +54,19 @@
             orderItems.push({ product: null, price: '', quantity: 1 });
         }
     "
-        x-on:client-selected.window="
+
+    x-on:client-selected.window="
         selectedClient = $event.detail.client;
         $modalClose('modal-listclient');
-    ">
-        <x-custom-card title="Dados da Venda" backUrl="orders.index">
-            <form method="POST" action="{{ route('orders.store') }}">
+    "
+>
+
+
+
+        <x-custom-card title="Editar Venda" backUrl="orders.index">
+            <form method="POST" action="{{ route('orders.update', $order->id) }}">
                 @csrf
+                @method('PUT')
 
                 <!-- Seleção do Cliente -->
                 <div class="mb-6">
@@ -119,13 +137,12 @@
                 </div>
 
                 <div class="mt-6 text-right">
-                    <x-primary-button type="submit">Salvar Pedido</x-primary-button>
+                    <x-primary-button type="submit">Atualizar Pedido</x-primary-button>
                 </div>
             </form>
         </x-custom-card>
 
-        {{-- Importando os modais dos partials --}}
-     @include('orders.partials.modals', ['clients' => $clients, 'products' => $products])
-     
+        <!-- Reaproveite os modais de clientes e produtos do create.blade.php -->
+        @include('orders.partials.modals', ['clients' => $clients, 'products' => $products])
     </div>
 </x-app-layout>
