@@ -132,9 +132,6 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Client $client)
     {
         $client->delete();

@@ -1,76 +1,81 @@
-@section('title', 'Lista de Vendas')
+@section('title', 'Lista de Pedidos')
 
 <x-app-layout>
     <div>
-        <x-card title="Vendas Registradas" backUrl="dashboard">
-            <x-searchbox />
-
-            {{-- @if (session('success'))
-                <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if ($clients->isEmpty())
-                <p class="text-black">Nenhum cliente cadastrado.</p>
+        <x-custom-card title="Pedidos Cadastrados" backUrl="dashboard">
+            <x-searchbox></x-searchbox>
+            @if ($orders->isEmpty())
+                <p class="text-black">Nenhum pedido cadastrado.</p>
             @else
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-200 rounded-md">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="px-4 py-2 text-left">Nome</th>
-                                <th class="px-4 py-2 text-left">CPF</th>
-                                <th class="px-4 py-2 text-left">Telefone</th>
-                                <th class="px-4 py-2 text-left">E-mail</th>
+                                <th class="px-4 py-2 text-left">ID</th>
+                                <th class="px-4 py-2 text-left">Cliente</th>
+                                <th class="px-4 py-2 text-left">Data do Pedido</th>
+                                <th class="px-4 py-2 text-left">Valor Total</th>
                                 <th class="px-4 py-2 text-right">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clients as $client)
+                            @foreach ($orders as $order)
                                 <tr class="border-t hover:bg-gray-50">
-                                    <td class="px-4 py-2 text-left">{{ $client->name }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->cpf_formatado }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->phone_formatado }}</td>
-                                    <td class="px-4 py-2 text-left">{{ $client->email }}</td>
+                                    <td class="px-4 py-2 text-left">{{ $order->id }}</td>
+                                    <td class="px-4 py-2 text-left">
+                                        {{ $order->client->name ?? 'Cliente não encontrado' }}</td>
+                                    <td class="px-4 py-2 text-left">
+                                        {{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</td>
+                                    <td class="px-4 py-2 text-left">
+                                        R$ {{ number_format($order->total, 2, ',', '.') }}
+                                    </td>
                                     <td class="px-4 py-2 text-right">
                                         <div class="flex items-center justify-end gap-3">
-
-                                            <a href="{{ route('clients.show', $client) }}" title="Visualizar"
+                                            <a href="{{ route('orders.show', $order) }}" title="Visualizar"
                                                 class="text-emerald-600 hover:text-emerald-900 flex items-center justify-center w-6 h-6">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
-
-                                            <a href="{{ route('clients.edit', $client) }}" title="Editar"
+                                            <a href="{{ route('orders.edit', $order) }}" title="Editar"
                                                 class="text-blue-600 hover:text-blue-900 flex items-center justify-center w-6 h-6">
-                                                <i class="fa-solid fa-user-pen"></i>
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
-
-                                            <form method="POST" action="{{ route('clients.destroy', $client->id) }}">
+                                            <form method="POST" action="{{ route('orders.destroy', $order->id) }}">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <div x-data="{ showDeleteModal: false }"
-                                                    @close-modal.window="showDeleteModal = false">
+                                                <div x-data>
+                                                    <x-modal id="modal-delete">
+                                                        <x-slot:title>
+                                                            <span class="text-xl font-semibold text-black">
+                                                                Confirmar exclusão
+                                                            </span>
+                                                        </x-slot:title>
 
-                                                    <button @click.prevent="showDeleteModal = true"
+                                                        <p class="text-black mb-4">
+                                                            Tem certeza que deseja excluir este pedido? Essa ação não
+                                                            pode ser desfeita.
+                                                        </p>
+
+                                                        <div class="flex justify-end gap-2">
+                                                            <x-secondary-button x-on:click="$modalClose('modal-delete')"
+                                                                type="button">
+                                                                Cancelar
+                                                            </x-secondary-button>
+
+                                                            <x-primary-button
+                                                                x-on:click.prevent="$modalClose('modal-delete'); $el.closest('form').submit();"
+                                                                type="button">
+                                                                Excluir
+                                                            </x-primary-button>
+                                                        </div>
+                                                    </x-modal>
+
+                                                    <button type="button" x-on:click="$modalOpen('modal-delete')"
                                                         class="text-red-600 hover:text-red-800" title="Excluir cliente">
                                                         <i class="fa-solid fa-circle-xmark text-xl"></i>
                                                     </button>
-
-                                                    <x-modal x-show="showDeleteModal"
-                                                        x-on:close-modal.window="showDeleteModal = false"
-                                                        x-on:confirm-action.window="showDeleteModal = false; $el.closest('form').submit();"
-                                                        title="Confirmação de exclusão" confirmText="Excluir"
-                                                        cancelText="Cancelar">
-                                                        <p class="text-left">
-                                                            Tem certeza que deseja excluir este cliente? Essa ação não
-                                                            pode ser desfeita.
-                                                        </p>
-                                                    </x-modal>
-
                                                 </div>
                                             </form>
-
                                         </div>
                                     </td>
                                 </tr>
@@ -79,16 +84,16 @@
                     </table>
                 </div>
             @endif
-
             <div class="mt-6 text-right">
-                <a href="{{ route('clients.create') }}">
-                    <x-primary-button>Novo Cliente</x-primary-button>
+                <a href="{{ route('orders.create') }}">
+                    <x-primary-button>Novo Pedido</x-primary-button>
                 </a>
             </div>
 
+
             <div class="mt-4">
-                {{ $clients->links() }}
-            </div> --}}
-        </x-card>
+                {{ $orders->links() }}
+            </div>
+        </x-custom-card>
     </div>
 </x-app-layout>

@@ -23,17 +23,17 @@ class AppServiceProvider extends ServiceProvider
                         ['label' => 'Pedidos', 'route' => 'orders.index']
                     ]
                 ],
-                ['label' => 'Compras', 'icon' => 'cart-shopping', 'route' => 'welcome'],
+                ['label' => 'Compras', 'icon' => 'cart-shopping', 'route' => 'dev'],
                 [
                     'label' => 'Financeiro',
                     'icon' => 'money-bill',
                     'children' => [
-                        ['label' => 'Fornecedores', 'route' => 'welcome'],
-                        ['label' => 'Fornecedores', 'route' => 'welcome']
+                        ['label' => 'Fornecedores', 'route' => 'dev'],
+                        ['label' => 'Recebimentos', 'route' => 'dev']
                     ]
                 ],
-                ['label' => 'Estoque', 'icon' => 'box-open', 'route' => 'welcome'],
-                ['label' => 'Relatórios', 'icon' => 'money-bill-trend-up', 'route' => 'welcome'],
+                ['label' => 'Estoque', 'icon' => 'box-open', 'route' => 'dev'],
+                ['label' => 'Relatórios', 'icon' => 'money-bill-trend-up', 'route' => 'dev'],
             ];
         });
     }

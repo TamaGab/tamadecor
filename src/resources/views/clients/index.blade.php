@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-card title="Clientes Cadastrados" backUrl="dashboard">
+        <x-custom-card title="Clientes Cadastrados" backUrl="dashboard">
             <x-searchbox />
 
             @if (session('success'))
@@ -49,25 +49,37 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <div x-data="{ showDeleteModal: false }"
-                                                    @close-modal.window="showDeleteModal = false">
+                                                <div x-data>
+                                                    <x-modal id="modal-delete">
+                                                        <x-slot:title>
+                                                            <span class="text-xl font-semibold text-black">
+                                                                Confirmar exclusão
+                                                            </span>
+                                                        </x-slot:title>
 
-                                                    <button @click.prevent="showDeleteModal = true"
-                                                        class="text-red-600 hover:text-red-800" title="Excluir cliente">
-                                                        <i class="fa-solid fa-circle-xmark text-xl"></i>
-                                                    </button>
-
-                                                    <x-modal x-show="showDeleteModal"
-                                                        x-on:close-modal.window="showDeleteModal = false"
-                                                        x-on:confirm-action.window="showDeleteModal = false; $el.closest('form').submit();"
-                                                        title="Confirmação de exclusão" confirmText="Excluir"
-                                                        cancelText="Cancelar">
-                                                        <p class="text-left">
+                                                        <p class="text-black mb-4">
                                                             Tem certeza que deseja excluir este cliente? Essa ação não
                                                             pode ser desfeita.
                                                         </p>
+
+                                                        <div class="flex justify-end gap-2">
+                                                            <x-secondary-button x-on:click="$modalClose('modal-delete')"
+                                                                type="button">
+                                                                Cancelar
+                                                            </x-secondary-button>
+
+                                                            <x-primary-button
+                                                                x-on:click.prevent="$modalClose('modal-delete'); $el.closest('form').submit();"
+                                                                type="button">
+                                                                Excluir
+                                                            </x-primary-button>
+                                                        </div>
                                                     </x-modal>
 
+                                                    <button type="button" x-on:click="$modalOpen('modal-delete')"
+                                                        class="text-red-600 hover:text-red-800" title="Excluir cliente">
+                                                        <i class="fa-solid fa-circle-xmark text-xl"></i>
+                                                    </button>
                                                 </div>
                                             </form>
 
@@ -89,6 +101,6 @@
             <div class="mt-4">
                 {{ $clients->links() }}
             </div>
-        </x-card>
+        </x-custom-card>
     </div>
 </x-app-layout>

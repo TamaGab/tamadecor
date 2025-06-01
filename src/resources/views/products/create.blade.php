@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-card title="Dados do Produto">
+        <x-custom-card title="Dados do Produto">
             <form method="POST" action="{{ route('products.store') }}">
                 @csrf
 
@@ -28,6 +28,6 @@
                 </div>
 
             </form>
-        </x-card>
+        </x-custom-card>
     </div>
 </x-app-layout>

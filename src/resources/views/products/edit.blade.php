@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div>
-        <x-card title="Editar Produto" backUrl="products.index">
+        <x-custom-card title="Editar Produto" backUrl="products.index">
             <form method="POST" action="{{ route('products.update', $product) }}">
                 @csrf
                 @method('PUT')
@@ -28,6 +28,6 @@
                     <x-primary-button>Atualizar</x-primary-button>
                 </div>
             </form>
-        </x-card>
+        </x-custom-card>
     </div>
 </x-app-layout>

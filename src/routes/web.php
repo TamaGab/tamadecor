@@ -10,7 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,6 +28,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit'); // editar
         Route::put('/{client}', [ClientController::class, 'update'])->name('clients.update');  // atualizar
         Route::delete('/{client}', [ClientController::class, 'destroy'])->name('clients.destroy'); // deletar
+        Route::get('clients/search', [ClientController::class, 'search'])->name('clients.search');
     });
 
     // PEDIDOS
@@ -36,10 +36,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('orders.index');       // listagem
         Route::get('/create', [OrderController::class, 'create'])->name('orders.create'); // formulário
         Route::post('/', [OrderController::class, 'store'])->name('orders.store');       // salvar
-        Route::get('/{client}', [OrderController::class, 'show'])->name('orders.show');  // visualizar
-        Route::get('/{client}/edit', [OrderController::class, 'edit'])->name('orders.edit'); // editar
-        Route::put('/{client}', [OrderController::class, 'update'])->name('orders.update');  // atualizar
-        Route::delete('/{client}', [OrderController::class, 'destroy'])->name('orders.destroy'); // deletar
+        Route::get('/{order}', [OrderController::class, 'show'])->name('orders.show');  // visualizar
+        Route::get('/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit'); // editar
+        Route::put('/{order}', [OrderController::class, 'update'])->name('orders.update');  // atualizar
+        Route::delete('/{order}', [OrderController::class, 'destroy'])->name('orders.destroy'); // deletar
     });
 
     // PRODUTOS
@@ -52,6 +52,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');  // atualizar
         Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy'); // deletar
     });
+
+    Route::get('/desenvolvimento', function () {
+        return view('error.desenvolvimento');
+    })->name('dev');
 });
 
 require __DIR__ . '/auth.php';
