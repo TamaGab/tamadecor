@@ -52,6 +52,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');  // atualizar
         Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy'); // deletar
     });
+
+    Route::get('/desenvolvimento', function () {
+        return view('error.desenvolvimento');
+    })->name('dev');
 });
 
 require __DIR__ . '/auth.php';
