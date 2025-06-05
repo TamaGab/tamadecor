@@ -10,11 +10,13 @@
                         {{-- Total do Dia --}}
                         <div>
                             <x-card>
-                                <x-slot:header><span class="font-bold">Total do Dia</span></x-slot:header>
-                                <div>
-                                    <a href="{{ route('orders.index') }}" class="hover:text-emerald-600">
+                                <x-slot:header><span class="font-bold text-xl ">Total do Dia</span></x-slot:header>
+                                <div class="flex items-center justify-between">
+                                    <a href="{{ route('orders.index') }}"
+                                        class="hover:text-emerald-600 text-lg font-semibold">
                                         R$ {{ number_format($totalValue, 2, ',', '.') }}
                                     </a>
+                                    <i class="fa-solid fa-money-bill text-3xl text-emerald-500"></i>
                                 </div>
                             </x-card>
                         </div>
@@ -22,10 +24,14 @@
                         {{-- Total de Vendas --}}
                         <div>
                             <x-card>
-                                <x-slot:header><span class="font-bold">Total Vendas</span></x-slot:header>
-                                <a href="{{ route('orders.index') }}" class="hover:text-emerald-600">
-                                    {{ $totalOrders }}
-                                </a>
+                                <x-slot:header><span class="font-bold text-xl">Total Vendas </span></x-slot:header>
+                                <div class="flex items-center justify-between">
+                                    <a href="{{ route('orders.index') }}"
+                                        class="hover:text-emerald-600 text-lg font-semibold">
+                                        {{ $totalOrders }}
+                                    </a>
+                                    <i class="fa-solid fa-handshake text-3xl text-emerald-500"></i>
+                                </div>
                             </x-card>
                         </div>
                     </div>
@@ -38,7 +44,7 @@
                             <x-date label="Selecione a data" name="date" format="DD/MM/YYYY"
                                 value="{{ $date }}" x-on:select="setTimeout(() => $refs.form.submit(), 50)" />
                         </form>
-                        <x-slot:header><span class="font-bold">Gráfico de Vendas</span></x-slot:header>
+                        <x-slot:header><span class="font-bold text-xl">Gráfico de Vendas</span></x-slot:header>
                         <canvas id="salesChart" width="100%" height="25"></canvas>
                     </x-card>
                 </div>
