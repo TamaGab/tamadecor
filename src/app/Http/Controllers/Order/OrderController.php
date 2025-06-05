@@ -168,7 +168,6 @@ class OrderController extends Controller
         $order->update([
             'client_id' => $request->client_id,
             'total_price' => $total,
-            'order_date' => now(),
         ]);
 
         // Sincroniza os itens do pedido
