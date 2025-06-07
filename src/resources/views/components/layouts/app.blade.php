@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ asset('js/fontawesome.min.js') }}"></script>
     <tallstackui:script />
     @livewireStyles

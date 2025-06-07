@@ -83,6 +83,7 @@ class OrderController extends Controller
         $order = Order::create([
             'client_id' => $request->client_id,
             'total_price' => $total,
+            'order_date' => now(),
         ]);
 
         // Cria os itens
