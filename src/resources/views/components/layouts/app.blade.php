@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="font-serif antialiased">
+<body class="font-serif antialiased overflow-x-hidden">
     <div class="min-h-screen bg-gray-100">
         <div>
             <x-app-page-header />
@@ -31,7 +31,7 @@
         <div class="flex h-screen">
             <x-sidebar />
 
-            <main class="flex-1 p-6">
+            <main class="flex-1 px-4 sm:px-6 lg:px-8 py-6 overflow-hidden">
                 {{ $slot }}
             </main>
 
