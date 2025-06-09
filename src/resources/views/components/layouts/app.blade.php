@@ -27,9 +27,9 @@
     <div class="fixed top-0 left-0 w-full bg-white shadow z-50">
         <x-app-page-header />
     </div>
-    
+
     <div class="flex">
-        
+
         <div class="fixed top-[64px] left-0 w-80 h-[calc(100vh-64px)] bg-emerald-600 text-white z-40 overflow-y-auto">
             <x-sidebar />
         </div>

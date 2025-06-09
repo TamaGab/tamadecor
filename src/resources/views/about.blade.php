@@ -23,10 +23,14 @@
 <body class="bg-gray-100 text-gray-800 font-sans antialiased">
     <div class="max-w-4xl mx-auto px-6 py-4 bg-white shadow-xl rounded-2xl space-y-10 leading-relaxed">
         <div class="flex items-center gap-6 border-b-2 border-black pb-4">
-            <img src="{{ asset('img/fatec-logo.jpg') }}" alt="Logo Fatec Indaiatuba" class="h-14 object-contain" />
 
-            <img src="{{ asset('img/tamarossi-decoracoes-logo.png') }}" alt="Logo da empresa Tamarossi Decorações"
-                class="h-10 object-contain" />
+            <a href="{{ route('welcome') }}">
+                <img src="{{ asset('img/fatec-logo.jpg') }}" alt="Logo Fatec Indaiatuba"
+                    class="h-14 object-contain" /></a>
+
+            <a href="{{ route('welcome') }}"><img src="{{ asset('img/tamarossi-decoracoes-logo.png') }}"
+                    alt="Logo da empresa Tamarossi Decorações" class="h-10 object-contain" /></a>
+
         </div>
 
         <h1 class="text-3xl font-bold text-emerald-800 flex items-center gap-3">
