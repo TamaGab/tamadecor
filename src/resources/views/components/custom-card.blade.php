@@ -1,3 +1,4 @@
+{{-- resources/views/components/custom-card.blade.php --}}
 @props([
     'title' => null,
     'backUrl' => null,
@@ -9,9 +10,8 @@
 
 <div
     {{ $attributes->merge([
-        'class' => trim('bg-white border border-gray-200 rounded-lg shadow-sm p-6 mx-6 my-6'),
+        'class' => 'bg-white border border-gray-200 rounded-lg shadow-sm px-4 sm:px-6 py-6 my-6',
     ]) }}>
-
     @if ($title)
         <div class="mb-6 pb-6 border-b-2 border-black flex items-center gap-2">
             <a href="{{ $resolvedBackUrl }}"
@@ -24,16 +24,7 @@
         </div>
     @endif
 
-
     <div class="text-black">
         {{ $slot }}
     </div>
-
-
-
-    {{-- @isset($footer)
-        <div class="mt-6 pt-4 border-t border-gray-200 text-right">
-            {{ $footer }}
-        </div>
-    @endisset --}}
 </div>

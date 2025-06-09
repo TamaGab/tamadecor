@@ -9,30 +9,36 @@
                     <div class="grid grid-cols-2 gap-6">
                         {{-- Total do Dia --}}
                         <div>
-                            <x-card>
-                                <x-slot:header><span class="font-bold text-xl ">Total do Dia</span></x-slot:header>
-                                <div class="flex items-center justify-between">
-                                    <a href="{{ route('orders.index') }}"
-                                        class="hover:text-emerald-600 text-lg font-semibold">
+                            <a href="{{ route('orders.index') }}" class="group">
+                                <x-card class="group-hover:bg-emerald-200">
+                                    <div class="pb-2">
+                                        <span class="font-bold text-xl">Total do Dia</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-lg font-semibold">
                                         R$ {{ number_format($totalValue, 2, ',', '.') }}
-                                    </a>
-                                    <i class="fa-solid fa-money-bill text-3xl text-emerald-500"></i>
-                                </div>
-                            </x-card>
+                                        <i class="fa-solid fa-money-bill text-3xl text-emerald-500"></i>
+                                    </div>
+
+                                </x-card>
+                            </a>
                         </div>
 
                         {{-- Total de Vendas --}}
                         <div>
-                            <x-card>
-                                <x-slot:header><span class="font-bold text-xl">Total Vendas </span></x-slot:header>
-                                <div class="flex items-center justify-between">
-                                    <a href="{{ route('orders.index') }}"
-                                        class="hover:text-emerald-600 text-lg font-semibold">
+                            <a href="{{ route('orders.index') }}" class="group">
+                                <x-card class="group-hover:bg-emerald-200">
+                                    <div class="pb-2">
+                                        <span class="font-bold text-xl">Total Vendas</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-lg font-semibold">
+
+
                                         {{ $totalOrders }}
-                                    </a>
-                                    <i class="fa-solid fa-handshake text-3xl text-emerald-500"></i>
-                                </div>
-                            </x-card>
+
+                                        <i class="fa-solid fa-handshake text-3xl text-emerald-500"></i>
+                                    </div>
+                                </x-card>
+                            </a>
                         </div>
                     </div>
                 </div>

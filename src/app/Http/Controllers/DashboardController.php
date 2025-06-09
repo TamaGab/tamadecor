@@ -57,7 +57,7 @@ class DashboardController extends Controller
         $totalValue = $orders->sum('total_price');
         $totalOrders = $orders->count();
 
-        return view('dashboard', compact(
+        return view('dashboard/dashboard', compact(
             'orders',
             'date',
             'totalValue',

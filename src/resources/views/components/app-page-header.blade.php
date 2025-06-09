@@ -1,4 +1,4 @@
- <header class="bg-white shadow-lg border-gray-200 h-16 flex items-center px-3 z-10">
+ <header class="bg-white shadow-lg border-gray-200 h-16 flex items-center px-3">
      <a href="{{ route('dashboard') }}">
          <img src="{{ asset('img/tamarossi-decoracoes-logo.png') }}" alt="Logo da empresa Tamarossi Decorações">
      </a>

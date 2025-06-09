@@ -22,24 +22,25 @@
 
 </head>
 
-<body class="font-serif antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <div>
-            <x-app-page-header />
-        </div>
+<body class="font-serif antialiased overflow-x-hidden">
 
-        <div class="flex h-screen">
-            <x-sidebar />
-
-            <main class="flex-1 p-6">
-                {{ $slot }}
-            </main>
-
-        </div>
-
-
+    <div class="fixed top-0 left-0 w-full bg-white shadow z-50">
+        <x-app-page-header />
     </div>
+    
+    <div class="flex">
+        
+        <div class="fixed top-[64px] left-0 w-80 h-[calc(100vh-64px)] bg-emerald-600 text-white z-40 overflow-y-auto">
+            <x-sidebar />
+        </div>
+
+        <div class="flex-1 ml-80 pt-[64px] px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto min-h-screen bg-gray-100">
+            {{ $slot }}
+        </div>
+    </div>
+
     @livewireScripts
 </body>
+
 
 </html>
