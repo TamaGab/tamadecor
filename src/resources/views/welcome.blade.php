@@ -113,7 +113,7 @@
                     de aula à prática simulada de engenharia de software.
                 </div>
 
-                <a href="#"
+                <a href="about"
                     class="inline-flex items-center gap-2 mt-4 text-sm font-medium text-emerald-600 hover:text-emerald-800 hover:underline transition-all">
                     <i class="fas fa-circle-info text-base"></i>
                     Sobre o Projeto
