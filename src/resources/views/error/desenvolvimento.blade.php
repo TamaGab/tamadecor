@@ -21,7 +21,8 @@
                     <div class="bg-gray-600 h-full w-3/5 rounded-full"></div>
                 </div>
 
-                <div class="bg-amber-100 border border-amber-300 text-amber-700 text-sm rounded-xl px-4 py-2 shadow-sm">
+                <div
+                    class="border-l-4 bg-amber-100 border border-amber-300 text-amber-700 text-sm rounded-xl px-4 py-2 shadow-sm">
                     Esta função estará disponível nas próximas atualizações.
                 </div>
 
