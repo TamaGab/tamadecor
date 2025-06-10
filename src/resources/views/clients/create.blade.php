@@ -3,8 +3,13 @@
 <x-app-layout>
     <div>
         <x-custom-card title="Dados do Cliente">
+            @php
+                $source = url()->previous() == route('orders.create') ? 'orders' : 'clients';
+            @endphp
             <form method="POST" action="{{ route('clients.store') }}">
                 @csrf
+
+                <input type="hidden" name="source" value="{{ $source }}">
 
                 <div class="grid grid-cols-3 gap-6">
                     <div>

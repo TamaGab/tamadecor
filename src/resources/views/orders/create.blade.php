@@ -87,7 +87,8 @@
                             <!-- Quantidade -->
                             <div>
                                 <text-input class="block mb-1">Quantidade</text-input>
-                                <input type="number" :name="`order_items[${index}][quantity]`" min="1" step="1"
+                                <input type="number" :name="`order_items[${index}][quantity]`" min="1"
+                                    step="1"
                                     class="w-20 border border-gray-300 rounded-md p-2 placeholder-gray-400 focus:border-emerald-300 block"
                                     x-model="item.quantity">
                             </div>
@@ -125,7 +126,7 @@
         </x-custom-card>
 
         {{-- Importando os modais dos partials --}}
-     @include('orders.partials.modals', ['clients' => $clients, 'products' => $products])
-     
+        @include('orders.partials.modals', ['clients' => $clients, 'products' => $products])
+
     </div>
 </x-app-layout>

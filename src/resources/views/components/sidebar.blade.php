@@ -12,7 +12,7 @@
 
             @if (!$hasChildren)
                 <a href="{{ route($item['route']) }}"
-                    class="flex items-center gap-3 p-3 rounded transition-all duration-200
+                    class="flex items-center gap-3 p-3 rounded transition-all duration-200 
                           hover:text-emerald-300 {{ $isActive ? 'text-emerald-300 font-bold' : '' }}">
 
                     <span class="w-6 flex justify-center">

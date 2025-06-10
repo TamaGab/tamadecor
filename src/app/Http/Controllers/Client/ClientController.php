@@ -72,12 +72,18 @@ class ClientController extends Controller
         ]);
 
 
+        $client = Client::create($validated);
 
+        if ($request->input('source') === 'orders') {
+            return redirect()
+                ->route('orders.create')
+                ->with('success', 'Cliente criado e pronto para o pedido!')
+                ->with('new_client_id', $client->id);
+        }
 
-
-        Client::create($validated);
-
-        return redirect()->route('clients.index')->with('success', 'Cliente criado com sucesso!');
+        return redirect()
+            ->route('clients.index')
+            ->with('success', 'Cliente criado com sucesso!');
     }
 
     /**
@@ -132,8 +138,10 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
-    public function destroy(Client $client)
+    public function destroy(int $clientID)
     {
+        $client = Client::find($clientID);
+        // dd($clientID);
         $client->delete();
         return redirect()->route('clients.index')->with('success', 'Cliente excluido com sucesso!');
     }
