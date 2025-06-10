@@ -29,7 +29,6 @@
                                     <td class="px-4 py-2 text-left">
                                         R$ {{ number_format($order->total, 2, ',', '.') }}
                                     </td>
-                                    <td>{{ $order->id }}</td>
                                     <td class="px-4 py-2 text-right">
                                         <div class="flex items-center justify-end gap-3">
                                             <a href="{{ route('orders.show', $order) }}" title="Visualizar"

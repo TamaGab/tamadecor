@@ -24,7 +24,7 @@
     <div class="max-w-4xl mx-auto px-6 py-4 bg-white shadow-xl rounded-2xl space-y-10 leading-relaxed">
         <div class="flex items-center gap-6 border-b-2 border-black pb-4">
 
-            <a href="{{  url()->previous() }}">
+            <a href="{{ url()->previous() }}">
                 <img src="{{ asset('img/fatec-logo.jpg') }}" alt="Logo Fatec Indaiatuba"
                     class="h-14 object-contain" /></a>
 
@@ -149,9 +149,9 @@
             </h2>
             <ul class="list-disc list-inside ml-6 text-base space-y-2">
                 <li>Gabriel Tamarossi</li>
-                <li>Gustavo</li>
-                <li>João</li>
-                <li>Samuel Ribeiro</li>
+                <li>Gustavo Henrique Camargo Felizardo</li>
+                <li>João Pedro Souza Silva</li>
+                <li>Samuel José Santos Ribeiro da Silva</li>
             </ul>
         </div>
 

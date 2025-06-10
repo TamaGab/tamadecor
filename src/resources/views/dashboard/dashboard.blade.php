@@ -47,8 +47,9 @@
                 <div class="flex">
                     <x-card>
                         <form method="GET" action="{{ route('dashboard') }}" x-data x-ref="form">
-                            <x-date label="Selecione a data" name="date" format="DD/MM/YYYY"
-                                value="{{ $date }}" x-on:select="setTimeout(() => $refs.form.submit(), 50)" />
+                            <x-date label="Selecione a data" name="date" format="DD/MM/YYYY" :max-date="now()"
+                                :min-year="2020" value="{{ $date }}"
+                                x-on:select="setTimeout(() => $refs.form.submit(), 50)" />
                         </form>
                         <x-slot:header><span class="font-bold text-xl">Gráfico de Vendas</span></x-slot:header>
                         <canvas id="salesChart" width="100%" height="25"></canvas>
