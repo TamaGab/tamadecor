@@ -1,35 +1,30 @@
-# Laravel - Projeto Tama Decorações
+# Laravel - Projeto Acadêmico Fatec Indaiatuba
 
-Este projeto Laravel suporta dois ambientes diferentes para rodar a aplicação:
+Aplicação web desenvolvida como projeto acadêmico na **Fatec Indaiatuba**, com foco em praticar o ciclo completo de desenvolvimento de software baseado em demandas reais.
 
-- **🐋 Docker/WSL (Linux)**
-- **🐘 Herd (macOS)**
+## Funcionalidades
 
----
-
-## ⚙️ Requisitos
-
-### Para Docker (Linux/WSL)
-- Docker + Docker Compose
-- Bash
-
-### Para Herd (macOS)
-- [Herd](https://herd.laravel.com)
-- PHP 8.2+
-- Composer
+- CRUD de Clientes, Produtos e Pedidos  
+- Dashboard com gráficos e indicadores  
+- Autenticação de usuários   
 
 ---
 
-## 🚀 Como rodar o projeto
+## Requisitos
 
-### 👉 Opção 1: Usando Docker
+### Docker (Linux/WSL)
+- Docker + Docker Compose  
+- Bash  
+  
+---
 
-1. Clone o projeto:
+## Como rodar o projeto
+
+### Usando Docker (Linux/WSL)
 
 ```bash
 git clone https://github.com/usuario/repositorio.git
-cd laravel-tamadecor
-
+cd tamadecor
 
 chmod +x start.sh
 ./start.sh

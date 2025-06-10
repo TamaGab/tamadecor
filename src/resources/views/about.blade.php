@@ -177,6 +177,14 @@
             </p>
         </div>
 
+        <div class="text-sm text-center text-gray-500 pt-6">
+            Repositório do projeto disponível em:
+            <a href="https://github.com/seu-usuario/seu-repositorio" target="_blank"
+                class="text-emerald-600 underline hover:text-emerald-800 transition">
+                https://github.com/TamaGab/tamadecor
+            </a>
+        </div>
+
     </div>
 </body>
 
