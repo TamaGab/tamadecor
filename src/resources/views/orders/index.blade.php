@@ -44,7 +44,7 @@
                                                 @method('DELETE')
 
                                                 <div x-data>
-                                                    <x-modal id="modal-delete">
+                                                    <x-modal id="modal-delete{{ $order->id }}">
                                                         <x-slot:title>
                                                             <span class="text-xl font-semibold text-black">
                                                                 Confirmar exclusão
@@ -57,20 +57,22 @@
                                                         </p>
 
                                                         <div class="flex justify-end gap-2">
-                                                            <x-secondary-button x-on:click="$modalClose('modal-delete')"
+                                                            <x-secondary-button
+                                                                x-on:click="$modalClose('modal-delete{{ $order->id }}')"
                                                                 type="button">
                                                                 Cancelar
                                                             </x-secondary-button>
 
                                                             <x-primary-button
-                                                                x-on:click.prevent="$modalClose('modal-delete'); $el.closest('form').submit();"
+                                                                x-on:click.prevent="$modalClose('modal-delete{{ $order->id }}'); $el.closest('form').submit();"
                                                                 type="button">
                                                                 Excluir
                                                             </x-primary-button>
                                                         </div>
                                                     </x-modal>
 
-                                                    <button type="button" x-on:click="$modalOpen('modal-delete')"
+                                                    <button type="button"
+                                                        x-on:click="$modalOpen('modal-delete{{ $order->id }}')"
                                                         class="text-red-600 hover:text-red-800" title="Excluir cliente">
                                                         <i class="fa-solid fa-circle-xmark text-xl"></i>
                                                     </button>

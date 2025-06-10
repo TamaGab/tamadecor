@@ -1,4 +1,4 @@
-<aside class="top-0 left-0 w-80 h-full bg-emerald-600 text-white">
+<aside class="top-0 left-0 w-80 h-full bg-emerald-600 text-white flex flex-col justify-between">
     <nav class="px-5 py-5 space-y-1 text-sm font-medium">
         @foreach ($sidebarMenu as $item)
             @php
@@ -12,7 +12,7 @@
 
             @if (!$hasChildren)
                 <a href="{{ route($item['route']) }}"
-                    class="flex items-center gap-3 p-3 rounded transition-all duration-200
+                    class="flex items-center gap-3 p-3 rounded transition-all duration-200 
                           hover:text-emerald-300 {{ $isActive ? 'text-emerald-300 font-bold' : '' }}">
 
                     <span class="w-6 flex justify-center">
@@ -27,8 +27,8 @@
             @else
                 <button type="button"
                     class="flex items-center w-full gap-3 p-3 rounded transition-all duration-200
-                           hover:text-emerald-300
-                           {{ $hasActiveChild ? 'text-emerald-300 font-bold text-2xl' : 'text-lg' }}"
+                               hover:text-emerald-300
+                               {{ $hasActiveChild ? 'text-emerald-300 font-bold text-2xl' : 'text-lg' }}"
                     data-collapse-toggle="{{ $collapseId }}" aria-controls="{{ $collapseId }}"
                     aria-expanded="{{ $hasActiveChild ? 'true' : 'false' }}">
                     <span class="w-6 flex justify-center">
@@ -47,7 +47,7 @@
                         <li>
                             <a href="{{ route($child['route']) }}"
                                 class="block p-2 rounded hover:text-emerald-300 transition
-                                       {{ $childActive ? 'text-emerald-300 font-bold' : '' }}">
+                                      {{ $childActive ? 'text-emerald-300 font-bold' : '' }}">
                                 {{ $child['label'] }}
                             </a>
                         </li>
@@ -56,4 +56,12 @@
             @endif
         @endforeach
     </nav>
+
+    <div class="px-5 pb-6">
+        <a href="{{ route('about') }}"
+            class="inline-flex items-center gap-2 text-sm font-bold hover:text-emerald-300 hover:underline transition-all mb-2">
+            <i class="fas fa-circle-info text-xl"></i>
+            <p class="text-xl">Sobre o Projeto</p>
+        </a>
+    </div>
 </aside>

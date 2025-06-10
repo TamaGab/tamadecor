@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -42,9 +43,21 @@ class ProductController extends Controller
             ['name.required' => 'O nome do produto é obrigatório!']
         );
 
-        Product::create($validated);
-        return redirect()->route('products.index')->with('success', 'Produto criado com sucesso!');
+        $product = Product::create($validated);
+
+
+        if ($request->input('source') === 'orders') {
+            return redirect()
+                ->route('orders.create')
+                ->with('success', 'Produto criado e pronto para o pedido!')
+                ->with('new_product_id', $product->id);
+        }
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Produto criado com sucesso!');
     }
+
 
     public function show(Product $product)
     {
@@ -75,9 +88,11 @@ class ProductController extends Controller
     }
 
 
-    public function destroy(Product $product)
+    public function destroy(int $productID)
     {
+        $product = Product::find($productID);
         $product->delete();
+
         return redirect()->route('products.index')->with('success', 'Produto removido com sucesso!');
     }
 }
