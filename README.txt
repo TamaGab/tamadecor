@@ -23,7 +23,7 @@ Aplicação web desenvolvida como projeto acadêmico na **Fatec Indaiatuba**, co
 ### Usando Docker (Linux/WSL)
 
 ```bash
-git clone https://github.com/usuario/repositorio.git
+git clone https://github.com/TamaGab/tamadecor
 cd tamadecor
 
 chmod +x start.sh
