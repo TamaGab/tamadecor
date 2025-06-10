@@ -24,7 +24,7 @@
     <div class="max-w-4xl mx-auto px-6 py-4 bg-white shadow-xl rounded-2xl space-y-10 leading-relaxed">
         <div class="flex items-center gap-6 border-b-2 border-black pb-4">
 
-            <a href="{{ route('welcome') }}">
+            <a href="{{  url()->previous() }}">
                 <img src="{{ asset('img/fatec-logo.jpg') }}" alt="Logo Fatec Indaiatuba"
                     class="h-14 object-contain" /></a>
 
