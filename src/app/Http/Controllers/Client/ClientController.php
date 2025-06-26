@@ -59,6 +59,7 @@ class ClientController extends Controller
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'email', 'max:255'],
             'notes' => ['nullable', 'string'],
+            'address' => ['nullable', 'string', 'max:255']
         ];
 
         if ($request->filled('cpf')) {
@@ -122,6 +123,7 @@ class ClientController extends Controller
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'email', 'max:255'],
             'notes' => ['nullable', 'string'],
+            'address' => ['nullable', 'string', 'max:255']
         ];
 
         if ($request->filled('cpf')) {
