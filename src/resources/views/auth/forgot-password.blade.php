@@ -13,8 +13,8 @@
             <!-- Email -->
             <div class="mb-4">
                 <x-input-label for="email" value="E-mail" />
-                <x-text-input id="email" type="email" name="email" placeholder="Email@exemplo.com"
-                    class="block w-full mt-1" :value="old('email')" required autofocus />
+                <x-text-input id="email" type="email" name="email" class="block w-full mt-1" :value="old('email')"
+                    required autofocus />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 

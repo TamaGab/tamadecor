@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Tama Decorações') }}</title>
+    <title>Login - Tama Decorações</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -56,7 +56,7 @@
                 <!-- Checkbox: Lembrar -->
                 <div class="flex items-center justify-between">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" name="remember"
+                        <input id="remember_me" type="checkbox" name="remember" value="1"
                             class="rounded border-gray-300 text-emerald-600 shadow-sm">
                         <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Lembrar de mim</span>
                     </label>
@@ -75,7 +75,8 @@
 
                 <!-- Link de suporte -->
                 <div class="text-center text-sm mt-2 text-gray-500">
-                    Precisa de suporte? <a href="#" class="underline">Acesse aqui</a>
+                    Precisa de suporte? <a href="{{ route('support') }}" class="underline hover:text-emerald-700">Acesse
+                        aqui</a>
                 </div>
             </form>
 
