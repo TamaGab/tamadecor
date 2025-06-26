@@ -75,7 +75,8 @@
 
                 <!-- Link de suporte -->
                 <div class="text-center text-sm mt-2 text-gray-500">
-                    Precisa de suporte? <a href="{{ route('support') }}" class="underline">Acesse aqui</a>
+                    Precisa de suporte? <a href="{{ route('support') }}" class="underline hover:text-emerald-700">Acesse
+                        aqui</a>
                 </div>
             </form>
 
