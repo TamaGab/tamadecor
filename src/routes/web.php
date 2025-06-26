@@ -5,10 +5,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return FacadesAuth::check()
+        ? redirect()->route('dashboard')
+        : view('auth.login');
 })->name('welcome');
 
 Route::get('about', function () {
