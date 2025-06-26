@@ -18,6 +18,10 @@ Route::get('about', function () {
     return view('about');
 })->name('about');
 
+Route::get('support', function () {
+    return view('support');
+})->name('support');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Tama Decorações</title>
+    <title>Login - Tama Decorações</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -75,7 +75,7 @@
 
                 <!-- Link de suporte -->
                 <div class="text-center text-sm mt-2 text-gray-500">
-                    Precisa de suporte? <a href="#" class="underline">Acesse aqui</a>
+                    Precisa de suporte? <a href="{{ route('support') }}" class="underline">Acesse aqui</a>
                 </div>
             </form>
 
