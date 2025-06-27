@@ -113,9 +113,9 @@ docker compose up -d
 
 Desenvolvido por estudantes da Fatec Indaiatuba:
 
-* Gabriel Tamarossi
-* Gustavo Henrique Camargo Felizardo
-* João Pedro Souza Silva
-* Samuel José Santos Ribeiro da Silva
+* Gabriel Tamarossi (TamaGab)
+* Gustavo Henrique Camargo Felizardo (Scott1Mjc)
+* João Pedro Souza Silva (Não participa da matéria Linguagem de Programação)
+* Samuel José Santos Ribeiro da Silva (SamukaRibeiro117)
 
 
