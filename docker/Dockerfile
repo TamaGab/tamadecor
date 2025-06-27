@@ -14,10 +14,8 @@ WORKDIR /var/www
 
 USER www-data
 
-# Copia o script para dentro da imagem
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# Dá permissão de execução
 USER root
 RUN chmod +x /usr/local/bin/entrypoint.sh
 USER www-data
@@ -25,5 +23,4 @@ USER www-data
 # Define o script como entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Mantém o comando padrão
 CMD ["php-fpm"]
