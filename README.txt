@@ -15,7 +15,7 @@ Aplicação web desenvolvida como projeto acadêmico na Fatec Indaiatuba, com fo
 ## COMO RODAR O PROJETO
 
 1. Clonar o repositório
-   git clone [https://github.com/TamaGab/tamadecor](https://github.com/TamaGab/tamadecor)
+   git clone https://github.com/TamaGab/tamadecor.git
    cd tamadecor
 
 2. Copiar o .env
